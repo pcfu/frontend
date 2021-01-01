@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Combining Selectors</title>
+
+    <style>
+      /* p elements with class=small */
+      p.small {
+        font-size: 12px;
+      }
+
+      /* p elements with class=big */
+      p.big {
+        font-size: 20px;
+      }
+
+      /* p elements that are descendants of #parent */
+      #parent p {
+        color: blue;
+      }
+
+      /* p elements that are direct children of #parent */
+      #parent > p {
+        font-weight: bold;
+      }
+
+      /* p elements with multiple classes */
+      p.class-1.class-2 {
+        color: red;
+        background-color: black;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      /* first sibling immediately after #node */
+      #node-li + * {
+        font-weight: bold;
+      }
+
+      /* all siblings after #node */
+      #node-li ~ * {
+        color: green;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div>
+      <p class="small">&lt;p&gt; element with "small" class</p>
+      <p>normal text</p>
+      <p class="big">&lt;p&gt; element with "big" class</p>
+    </div>
+
+    <div>
+      <article id="parent">
+        <div>
+          <p>Descendant (any level) of element with id=parent</p>
+        </div>
+        <p>Direct child of element with id=parent</p>
+      </article>
+    </div>
+
+    <div>
+      <p class="class-1 class-2">Selecting elements with multiple classes</p>
+    </div>
+
+    <div>
+      <ul>
+        <li>sibling</li>
+        <li>sibling</li>
+        <li id="node-li">node</li>
+        <li>Sibling directly after #node should be green and bold</li>
+        <li>Sibling after #node should be green</li>
+      </ul>
+    </div>
+  </body>
+</html>
